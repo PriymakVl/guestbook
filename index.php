@@ -1,13 +1,23 @@
 <?php
+use Pecee\SimpleRouter\SimpleRouter;
+
+// отображение всех типов ошибок
 ini_set('display_errors', 1);
-
-require_once 'functions.php';
-require_once 'autoload.php';
-
-require_once 'controllers/Base_Controller.php';
 
 session_start();
 
-Model::connect();
+require_once __DIR__ . '/vendor/autoload.php';
 
-Route::start(); // запускаем маршрутизатор
+App\Core\DB::getConnection();
+
+SimpleRouter::get('/', 'MainController@index');
+SimpleRouter::post('/post/add', 'MainController@addPost');
+
+// устанавливаем namespace для контроллера
+SimpleRouter::setDefaultNamespace('App\Controllers');
+
+// запускаем маршрутизатор
+SimpleRouter::start();
+
+
+

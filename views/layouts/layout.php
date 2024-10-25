@@ -10,11 +10,11 @@
 	<div id="wrapper">
 		<h1>Гостевая книга</h1>
 
-		<? include $content; ?>
+		{% include content ~ '.php' %}
 		
-		<? echo Message::display(); ?>
+		{{ message | raw }}
 
-		<? include 'views/partials/form.php'; ?>
+		{% include 'partials/form.php' %}
 	</div>
 </body>
 </html>

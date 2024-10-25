@@ -1,4 +1,5 @@
 <?php
+namespace App\Models;
 
 class Post extends Model
 {
@@ -11,11 +12,19 @@ class Post extends Model
 	public static function add($data) 
 	{
 		$data['date'] = time();
-		$table = self::getTable();
-		$sql = "INSERT INTO `$table` (`author`, `text`, `date`) 
-		VALUES (:author, :text, :date)";
-		$stmt = self::$db->prepare($sql);
-		return $stmt->execute($data);
+		return self::table()->create()->set($data)->save();
+	}
+
+	public static function validate($data)
+	{
+		$v = new \Valitron\Validator($data);
+        $v->rule('required', ['author', 'text'])->message('empty_{field}');
+        $v->labels(['author' => 'author', 'text' => 'text']);
+        $result = $v->validate();
+		if ($result) return false;
+		foreach ($v->errors() as $field => $errors) {
+			return $errors[0];
+		}
 	}
 
 }

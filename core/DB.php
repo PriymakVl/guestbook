@@ -1,7 +1,6 @@
 <?php
-// namespace Core;
+namespace App\Core;
 
-// use PDO;
 class DB {
 	private static $host = "localhost";
 	private static $db_name = "guestbook";
@@ -10,7 +9,8 @@ class DB {
 
 	public static function getConnection(){
 		$host_dbname = "mysql:host=" . self::$host . ";dbname=" . self::$db_name;
-		$connect = new PDO($host_dbname, self::$username, self::$password);
-		return $connect;
+		\ORM::configure($host_dbname);
+		\ORM::configure('username', self::$username);
+		\ORM::configure('password', self::$password);
 	}
 }

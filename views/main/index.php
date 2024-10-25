@@ -1,9 +1,9 @@
-<?php foreach ($posts as $post): ?>
+{% for post in posts %}
 	<div class="note">
 		<p>
-			<span class="date"><? echo date('d.m.Y H:i:s', $post['date']); ?></span>
-			<span class="name"><? echo $post['author']; ?></span>
+			<span class="date">{{ post.date | date("d.m.Y H:i:s") }}</span>
+			<span class="name">{{ post.author }}</span>
 		</p>
-		<p><? echo $post['text']; ?></p>
+		<p>{{ post.text }}</p>
 	</div>	
-<? endforeach; ?>
+{% endfor %}

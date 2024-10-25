@@ -1,5 +1,5 @@
 <div id="form">
-    <form action="/main/create" method="POST">
+    <form action="/post/add" method="POST">
         <p>
             <input type="text" name="author" class="form-control" placeholder="Ваше имя">
         </p>
