@@ -15,7 +15,10 @@ class Post extends Model
 		$sql = "INSERT INTO `$table` (`author`, `text`, `date`) 
 		VALUES (:author, :text, :date)";
 		$stmt = self::$db->prepare($sql);
-		return $stmt->execute($data);
+		$result = $stmt->execute($data);
+		if ($result === false) {
+			throw new Exception('add');
+		}
 	}
 
 }

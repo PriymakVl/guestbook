@@ -14,8 +14,8 @@ class Main_Controller extends Base_Controller
     {
         try {
             Validator::make($_POST)->empty();
-            $result = Post::add($_POST);
-            $this->addMessage($result, 'add');
+            Post::add($_POST);
+            $this->addMessage(true, 'add');
         }
         catch (Exception $e) {
             $this->addMessage(false, $e->getMessage());
