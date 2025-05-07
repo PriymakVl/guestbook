@@ -34,7 +34,7 @@ while($row = mysqli_fetch_assoc($result)) {
 			</div>	
 		<? endforeach; ?>
 		
-		<? if (isset($_GET['mess']) &&  $_GET['mess'] == 'add'): ?>
+		<? if (isset($_GET['success']) &&  $_GET['success'] == 'add'): ?>
 			<div class="info alert alert-info">
 				Запись успешно сохранена!
 			</div>

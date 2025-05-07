@@ -11,7 +11,7 @@ $sql = "INSERT INTO `posts`(`author`, `text`, `date`) VALUES ('$author', '$text'
 $result = mysqli_query($link, $sql);
 
 if ($result) {
-    header('Location: index.php?mess=add');
+    header('Location: index.php?success=add');
     exit;
 }
 else {
